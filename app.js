@@ -1,3 +1,5 @@
+// sideNav
+
 const $button  = document.querySelector('#sidebar-toggle');
 const $wrapper = document.querySelector('#wrapper');
 
@@ -5,8 +7,10 @@ $button.addEventListener('click', (e) => {
   e.preventDefault();
   $wrapper.classList.toggle('toggled');
 });
+
 // search Input
-function myFunction() {
+
+function myFunction(e) {
   var input, filter, ul, li, a, i, txtValue;
   input = document.getElementById("searchUser");
   filter = input.value.toUpperCase();
@@ -16,12 +20,18 @@ function myFunction() {
       a = li[i].getElementsByTagName("h5")[0];
       txtValue = a.textContent || a.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          li[i].style.display = "";
+          li[i].style.display = "block";
       } else {
-          li[i].style.display = "none";
+        li[i].style.display = "none";
+
       }
+
   }
+
+
 }
+
+
 
 document.addEventListener("DOMContentLoaded",function getJson() {
   fetch('posts.json')
@@ -29,7 +39,7 @@ document.addEventListener("DOMContentLoaded",function getJson() {
       return res.json();
     })
     .then(function(data) {
-      console.log(data);
+      //console.log(data);
       let output = '';
       data.forEach(function(post) {
         output += `
@@ -53,7 +63,6 @@ document.addEventListener("DOMContentLoaded",function getJson() {
 });
 
 
-// Get local json data
 
 
 
